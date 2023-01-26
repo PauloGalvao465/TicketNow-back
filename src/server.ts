@@ -1,14 +1,8 @@
 import express, { request, response } from "express";
-
+import { userRouter } from "./router/user.router";
 const app = express();
 
-app.get("/", (request, response) => {
-  return response.json({ message: "TICKETNOW-BACK" });
-});
+app.use(express.json());
+app.use("/user", userRouter);
 
-app.listen(3333);
-
-interface Cursos {
-  name: string;
-  duracao?: number; // ? adiciona como opcional
-}
+app.listen(3333, () => console.log("Servidor Ativo"));
