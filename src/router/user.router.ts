@@ -1,19 +1,16 @@
 import { request, response, Router } from "express";
-import { CreateUserService } from "../../target/createUserService";
-
-import { PostgresUserRepository } from "../reposotories/PostgresUserRepository";
-
-import { UserRepository } from "../reposotories/userRepository";
+import { UserRepository } from "../modules/user/reposotories/users/UserRepository";
+import { CreateUserService } from "../modules/user/services/CreateUserService";
 
 const userRouter = Router();
-const userRepository = new PostgresUserRepository();
+const userRepository = new UserRepository();
 
 userRouter.post("/", (request, response) => {
-  const { name, cpf, category, imail } = request.body;
+  const { name, cpf, category, email } = request.body;
 
   const createUserService = new CreateUserService(userRepository);
 
-  createUserService.execute({ name, cpf, category, imail });
+  createUserService.execute({ name, cpf, category, email });
   return response.status(201).send();
 });
 

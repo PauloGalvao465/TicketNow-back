@@ -1,11 +1,10 @@
-import { IUserRepository } from "../src/reposotories/IUserRepository";
-import { UserRepository } from "../src/reposotories/userRepository";
+import { IUserRepository } from "../reposotories/users/IUserRepository";
 
 interface IRequest {
   name: string;
   cpf: string;
   category: string;
-  imail: string;
+  email: string;
 }
 /**
  * Definir tipo de retorno
@@ -15,13 +14,13 @@ interface IRequest {
  */
 class CreateUserService {
   constructor(private userRepository: IUserRepository) {}
-  execute({ name, cpf, category, imail }: IRequest): void {
+  execute({ name, cpf, category, email }: IRequest): void {
     const userAlreadyExists = this.userRepository.findByCpf(cpf);
     if (userAlreadyExists) {
       throw new Error("Cpf Já existe!!");
     }
 
-    this.userRepository.create({ name, cpf, category, imail });
+    this.userRepository.create({ name, cpf, category, email });
   }
 }
 

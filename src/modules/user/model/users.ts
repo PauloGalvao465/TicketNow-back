@@ -6,7 +6,7 @@ class Users {
   "date": Date;
   "cpf": string;
   "category": string;
-  "imail": string;
+  "email": string;
 
   constructor() {
     if (!this.id) {

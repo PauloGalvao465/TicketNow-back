@@ -1,4 +1,4 @@
-import { Users } from "../model/users";
+import { Users } from "../../model/users";
 import { ICreateUserDTO, IUserRepository } from "./IUserRepository";
 
 class UserRepository implements IUserRepository {
@@ -8,14 +8,14 @@ class UserRepository implements IUserRepository {
     this.users = [];
   }
 
-  create({ name, cpf, category, imail }: ICreateUserDTO): void {
+  create({ name, cpf, category, email }: ICreateUserDTO): void {
     const user: Users = new Users();
 
     Object.assign(user, {
       name,
       cpf,
       category,
-      imail,
+      email,
       date: new Date(),
     });
 
