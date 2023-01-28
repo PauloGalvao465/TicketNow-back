@@ -1,4 +1,4 @@
-import { Companys } from "../../model/companys";
+import { Companys } from "../model/companys";
 
 interface ICreateCompanyDTO {
   name: string;
@@ -9,6 +9,7 @@ interface ICreateCompanyDTO {
 
 interface ICompanyRepository {
   create({ name, cnpj, description, email }: ICreateCompanyDTO): void;
+  list(): Companys[];
   findByCnpj(cnpj: string): Companys;
 }
 

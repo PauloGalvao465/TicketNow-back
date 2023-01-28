@@ -1,11 +1,11 @@
 import express, { request, response } from "express";
+import { router } from "./router";
 import { companyRouter } from "./router/users/company.router";
 import { userRouter } from "./router/users/user.router";
 const app = express();
 
 app.use(express.json());
-app.use("/user", userRouter);
 
-app.use("/company", companyRouter);
+app.use(router);
 
 app.listen(3333, () => console.log("Servidor Ativo"));

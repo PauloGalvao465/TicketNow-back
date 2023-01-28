@@ -1,4 +1,4 @@
-import { IUserRepository } from "../reposotories/users/IUserRepository";
+import { IUserRepository } from "../../reposotories/IUserRepository";
 
 interface IRequest {
   name: string;
@@ -12,7 +12,7 @@ interface IRequest {
  * acessar o repositorio
  * retornar algo
  */
-class CreateUserService {
+class CreateUserUseCase {
   constructor(private userRepository: IUserRepository) {}
   execute({ name, cpf, category, email }: IRequest): void {
     const userAlreadyExists = this.userRepository.findByCpf(cpf);
@@ -24,4 +24,4 @@ class CreateUserService {
   }
 }
 
-export { CreateUserService };
+export { CreateUserUseCase };

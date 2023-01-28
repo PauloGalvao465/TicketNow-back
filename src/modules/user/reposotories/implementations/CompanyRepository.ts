@@ -1,11 +1,23 @@
 import { Companys } from "../../model/companys";
-import { ICreateCompanyDTO, ICompanyRepository } from "./ICompanyRepository";
+import { ICreateCompanyDTO, ICompanyRepository } from "../ICompanyRepository";
 
 class CompanyRepository implements ICompanyRepository {
   private Companys: Companys[];
 
-  constructor() {
+  private static INSTANCE: CompanyRepository;
+
+  private constructor() {
     this.Companys = [];
+  }
+
+  /**
+   * getInstance
+   */
+  public static getInstance(): CompanyRepository {
+    if (!CompanyRepository.INSTANCE) {
+      CompanyRepository.INSTANCE = new CompanyRepository();
+    }
+    return CompanyRepository.INSTANCE;
   }
 
   create({ name, cnpj, description, email }: ICreateCompanyDTO): void {

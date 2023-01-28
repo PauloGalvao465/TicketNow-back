@@ -1,4 +1,4 @@
-import { ICompanyRepository } from "../reposotories/companys/ICompanyRepository";
+import { ICompanyRepository } from "../reposotories/ICompanyRepository";
 
 interface IRequest {
   name: string;
