@@ -1,10 +1,9 @@
-import { ICompanyRepository } from "../src/reposotories/ICompanyRepository";
-import { CompanyRepository } from "../src/reposotories/CompanyRepository";
+import { ICompanyRepository } from "../reposotories/companys/ICompanyRepository";
 
 interface IRequest {
   name: string;
-  cpf: string;
-  category: string;
+  cnpj: string;
+  description: string;
   email: string;
 }
 /**
@@ -15,13 +14,13 @@ interface IRequest {
  */
 class CreateCompanyService {
   constructor(private CompanyRepository: ICompanyRepository) {}
-  execute({ name, cpf, category, email }: IRequest): void {
-    const CompanyAlreadyExists = this.CompanyRepository.findByCpf(cpf);
+  execute({ name, cnpj, description, email }: IRequest): void {
+    const CompanyAlreadyExists = this.CompanyRepository.findByCnpj(cnpj);
     if (CompanyAlreadyExists) {
-      throw new Error("Cpf Já existe!!");
+      throw new Error("cnpj Já existe!!");
     }
 
-    this.CompanyRepository.create({ name, cpf, category, email });
+    this.CompanyRepository.create({ name, cnpj, description, email });
   }
 }
 

@@ -1,9 +1,9 @@
 import { v4 as uuidV4 } from "uuid";
 
-class Company {
+class Companys {
   "idCompany"?: string; // (?) Informa que é parametro Opcional
   "name": string;
-  "CNPJ": string;
+  "cnpj": string;
   "description": string;
   "email": string;
 
@@ -13,4 +13,4 @@ class Company {
     }
   }
 }
-export { Company };
+export { Companys };
