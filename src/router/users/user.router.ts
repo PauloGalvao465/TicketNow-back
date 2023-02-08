@@ -5,12 +5,17 @@ import { CreateUserUseCase } from "../../modules/user/useCases/CreateUser/Create
 import { listUserController } from "../../modules/user/useCases/ListUsers";
 import multer from "multer";
 import { importUserController } from "../../modules/user/useCases/ImportUser";
+
+import { Users } from "../../database/user";
+
 const userRouter = Router();
 
 const upload = multer({
   dest: "./tmp",
 });
-userRouter.post("/", (request, response) => {
+userRouter.post("/", async (request, response) => {
+  await Users.create(request.body);
+
   return createUserController.handle(request, response);
 });
 

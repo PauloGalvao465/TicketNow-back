@@ -1,7 +1,8 @@
 {
   "type": "mysql",
   "host": "localhost",
-  "username": "",
+  "username": "root",
+  "port": 3306,
   "password": "",
-  "database": "banco_TicktNow"
+  "database": "db_ticketnow"
 }

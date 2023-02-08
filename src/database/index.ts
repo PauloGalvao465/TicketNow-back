@@ -1,3 +1,18 @@
-import { createConnection } from "typeorm";
+import { DataSource } from "typeorm";
 
-createConnection();
+const AppDataSource = new DataSource({
+  type: "mysql",
+  host: "localhost",
+  port: 3306,
+  username: "root",
+  password: "",
+  database: "db_ticketnow",
+});
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Data Source has been initialized!");
+  })
+  .catch((err) => {
+    console.error("Error during Data Source initialization", err);
+  });
