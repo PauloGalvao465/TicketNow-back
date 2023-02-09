@@ -1,4 +1,4 @@
-import { Users } from "../../model/users";
+import { Users } from "../../entities/users";
 import { IUserRepository } from "../../reposotories/IUserRepository";
 
 class ListUserUseCase {

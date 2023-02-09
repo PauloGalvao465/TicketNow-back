@@ -1,4 +1,4 @@
-import { Companys } from "../../model/companys";
+import { Companys } from "../../entities/companys";
 import { ICreateCompanyDTO, ICompanyRepository } from "../ICompanyRepository";
 
 class CompanyRepository implements ICompanyRepository {

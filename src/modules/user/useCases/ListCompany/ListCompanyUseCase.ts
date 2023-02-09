@@ -1,5 +1,5 @@
 import { ICompanyRepository } from "../../reposotories/ICompanyRepository";
-import { Companys } from "../../model/companys";
+import { Companys } from "../../entities/companys";
 class ListCompanyUseCase {
   constructor(private CompanyRepository: ICompanyRepository) {}
   execute(): Companys[] {

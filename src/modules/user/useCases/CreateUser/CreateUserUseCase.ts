@@ -14,13 +14,14 @@ interface IRequest {
  */
 class CreateUserUseCase {
   constructor(private userRepository: IUserRepository) {}
-  execute({ name, cpf, category, email }: IRequest): void {
-    const userAlreadyExists = this.userRepository.findByCpf(cpf);
+  async execute({ name, cpf, category, email }: IRequest): Promise<void> {
+    const userAlreadyExists = await this.userRepository.findByCpf(cpf);
     if (userAlreadyExists) {
       throw new Error("Cpf Já existe!!");
     }
 
-    this.userRepository.create({ name, cpf, category, email });
+    var coupon = "11";
+    this.userRepository.create({ name, cpf, category, email, coupon });
   }
 }
 

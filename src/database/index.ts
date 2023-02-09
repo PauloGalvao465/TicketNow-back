@@ -7,6 +7,7 @@ const AppDataSource = new DataSource({
   username: "root",
   password: "",
   database: "db_ticketnow",
+  migrations: ["./migrations/*.ts"],
 });
 
 AppDataSource.initialize()
@@ -16,3 +17,5 @@ AppDataSource.initialize()
   .catch((err) => {
     console.error("Error during Data Source initialization", err);
   });
+
+export { AppDataSource };

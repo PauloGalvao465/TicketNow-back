@@ -1,45 +1,44 @@
-import { Users } from "../../model/users";
+import { getRepository, Repository } from "typeorm";
+import { AppDataSource } from "../../../../database";
+import { Users } from "../../entities/users";
 import { ICreateUserDTO, IUserRepository } from "../IUserRepository";
 
 class UserRepository implements IUserRepository {
-  private users: Users[];
+  private repository: Repository<Users>;
 
-  private static INSTANCE: UserRepository;
-
-  private constructor() {
-    this.users = [];
+  public constructor() {
+    this.repository = AppDataSource.getRepository(Users);
   }
 
   /**
    * getInstance
    */
-  public static getInstance(): UserRepository {
-    if (!UserRepository.INSTANCE) {
-      UserRepository.INSTANCE = new UserRepository();
-    }
-    return UserRepository.INSTANCE;
-  }
 
-  create({ name, cpf, category, email }: ICreateUserDTO): void {
-    const user: Users = new Users();
-
-    Object.assign(user, {
-      name,
-      cpf,
+  async create({
+    name,
+    cpf,
+    category,
+    email,
+    coupon,
+  }: ICreateUserDTO): Promise<void> {
+    const user = this.repository.create({
       category,
+      name,
       email,
-      date: new Date(),
+      cpf,
+      coupon,
     });
-
-    this.users.push(user);
+    await this.repository.save(user);
+    // this.users.push(user);
   }
-  list(): Users[] {
-    return this.users;
+  async list(): Promise<Users[]> {
+    const users = await this.repository.find();
+    return users;
   }
 
-  findByCpf(cpf: string): Users {
-    const user = this.users.find((user) => user.cpf == cpf);
-    return user;
+  async findByCpf(cpf: string): Promise<Users> {
+    // const user = await this.repository.findOne({cpf});
+    return null;
   }
 }
 

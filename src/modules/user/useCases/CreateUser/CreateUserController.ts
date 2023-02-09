@@ -4,8 +4,8 @@ import { CreateUserUseCase } from "./CreateUserUseCase";
 class CreateUserController {
   constructor(private createUserUseCase: CreateUserUseCase) {}
 
-  handle(request: Request, response: Response): Response {
-    const { name, cpf, category, email } = request.body;
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { name, cpf, category, email, coupon } = request.body;
 
     this.createUserUseCase.execute({ name, cpf, category, email });
     return response.status(201).send();

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "mysql2": "^3.1.1",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.28.0",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typeorm": "^0.3.12",
     "uuid": "^9.0.0",

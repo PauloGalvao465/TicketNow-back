@@ -1,4 +1,4 @@
-import { Companys } from "../model/companys";
+import { Companys } from "../entities/companys";
 
 interface ICreateCompanyDTO {
   name: string;
