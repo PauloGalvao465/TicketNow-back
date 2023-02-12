@@ -7,7 +7,7 @@ class CreateUserController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { name, cpf, category, email, coupon } = request.body;
 
-    this.createUserUseCase.execute({ name, cpf, category, email });
+    this.createUserUseCase.execute({ name, cpf, category, email, coupon });
     return response.status(201).send();
   }
 }

@@ -5,6 +5,7 @@ interface IRequest {
   cpf: string;
   category: string;
   email: string;
+  coupon: string;
 }
 /**
  * Definir tipo de retorno
@@ -14,7 +15,13 @@ interface IRequest {
  */
 class CreateUserUseCase {
   constructor(private userRepository: IUserRepository) {}
-  async execute({ name, cpf, category, email }: IRequest): Promise<void> {
+  async execute({
+    name,
+    cpf,
+    category,
+    email,
+    coupon,
+  }: IRequest): Promise<void> {
     const userAlreadyExists = await this.userRepository.findByCpf(cpf);
     if (userAlreadyExists) {
       throw new Error("Cpf Já existe!!");

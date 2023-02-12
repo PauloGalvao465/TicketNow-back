@@ -7,7 +7,7 @@ class UserRepository implements IUserRepository {
   private repository: Repository<Users>;
 
   public constructor() {
-    this.repository = AppDataSource.getRepository(Users);
+    this.repository = getRepository(Users);
   }
 
   /**
